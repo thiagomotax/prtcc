@@ -1,6 +1,6 @@
 <template>
   <v-container class="grey lighten-5" fluid>
-    <FormHeader
+    <FormHeaderNew
       boxColor="rgb(176, 161, 198)"
       textLeft1="INICIAL"
       textLeft2="1 DE 2"
@@ -19,83 +19,79 @@
       longGoals="Objetivos a longo prazo da T.A (1 ano +)"
       appraiser="Avaliador"
     />
+    
 
     <!-- questao a -->
-    <v-container class="rounded mb-5">
-      <span
-        >A. Que nota você daria hoje para as suas habilidades nas 9 áreas listas
+    <QuestionHeader
+      text="Que nota você daria hoje para as suas habilidades nas 9 áreas listas
         abaixo. Caso você já tenha dispositivos de TA ou outro auxílio,
-        considere-os.</span
-      >
-      <ul>
-        <li>
-          Para os itens 1-9 marque a resposta mais adequada (1 para ruim e até 5
-          para excelente).
-        </li>
-        <li>
-          Na coluna Nome do Dispositivo escreva o nome da TA que faz uso e onde
-          é relevante (por exemplo : “óculos de grau” na primeira linha,
-          “visão”);
-        </li>
-        <li>
-          Escreva um sinal de mais (+) no espaço onde você espera precisar de
-          mais dispositivos de TA ao longo do próximo ano (por exemplo :
-          “óculos” recebe um mais (+) se você espera precisar de lentes mais
-          fortes durante o próximo ano). Escreva um sinal de menos (-) nos
-          espaços onde você espera diminuir o suporte, e ( 0 ) onde você espera
-          que o seu dispositivo de TA deveria continuar o mesmo ao longo do
-          próximo ano.
-        </li>
-      </ul>
-    </v-container>
+        considere-os."
+      id="A"
+      :infos="[
+        'Para os itens 1-9 marque a resposta mais adequada (1 para ruim e até 5 para excelente).',
+        'Na coluna Nome do Dispositivo escreva o nome da TA que faz uso e ondeé relevante (por exemplo : “óculos de grau” na primeira linha, “visão”);',
+        'Escreva um sinal de mais (+) no espaço onde você espera precisar de mais dispositivos de TA ao longo do próximo ano (por exemplo : “óculos” recebe um mais (+) se você espera precisar de lentes mais fortes durante o próximo ano). Escreva um sinal de menos (-) nos espaços onde você espera diminuir o suporte, e ( 0 ) onde você espera que o seu dispositivo de TA deveria continuar o mesmo ao longo do próximo ano.',
+      ]"
+    />
+
     <div v-for="(question, index) in questionsA" :key="question.number">
       <question-type-1
-        :color="index % 2 == 0 ? 'rgb(229, 223, 237)' : ''"
+        :color="index % 2 == 1 ? 'rgb(229, 223, 237)' : ''"
         :number="question.number"
         :text="question.text"
+        :info="
+          index === 0
+            ? {
+                scale1: 'Ruim',
+                scale2: 'Médio',
+                scale3: 'Excelente',
+                input1: 'Nome do  Dispositivo ',
+                input2:
+                  'Necessita mais (+), menos (-), Permanecer da mesma forma (0)',
+              }
+            : ''
+        "
       />
     </div>
     <!-- questao a -->
 
     <!-- questao b -->
-    <v-container class="rounded mb-5">
-      <span
-        >B. Quanto você está satisfeito, atualmente, com as seguintes
-        áreas?</span
-      >
-      <ul>
-        <li>
-          Para os itens 10-21 marque a resposta mais adequada (dê 1 para não
-          satisfeito e até 5 para muito satisfeito). Quais são os 3 itens mais
-          importantes para você ? Considerando as 3 áreas mais importantes,
-          marque a ordem de prioridade 1º, 2º e 3º dos itens mais importantes
-          (1º = mais importante). Deixe as outras linhas em branco. Para os 3
-          itens mais importantes, escreva no espaço ao lado os principais
-          obstáculos e barreiras que você enfrenta.
-        </li>
-      </ul>
-    </v-container>
+    <QuestionHeader
+      text="Quanto você está satisfeito, atualmente, com as seguintes
+        áreas?"
+      id="B"
+      :infos="[
+        'Para os itens 10-21 marque a resposta mais adequada (dê 1 para não satisfeito e até 5 para muito satisfeito). Quais são os 3 itens mais importantes para você ? Considerando as 3 áreas mais importantes, marque a ordem de prioridade 1º, 2º e 3º dos itens mais importantes (1º = mais importante). Deixe as outras linhas em branco. Para os 3 itens mais importantes, escreva no espaço ao lado os principais obstáculos e barreiras que você enfrenta.',
+      ]"
+    />
     <div v-for="(question, index) in questionsB" :key="question.number">
       <question-type-1
         :number="question.number"
         :text="question.text"
         :color="index % 2 == 0 ? 'rgb(229, 223, 237)' : ''"
+        :info="
+          index === 0
+            ? {
+                scale1: 'Não Satisfeito',
+                scale2: 'Satisfeito',
+                scale3: 'Muito Satisfeito',
+                input1: '3 mais importantes',
+                input2: 'Obstáculos / barreiras',
+              }
+            : ''
+        "
       />
     </div>
     <!-- questao b -->
 
-    <!-- questao C -->
-    <v-container class="rounded mb-5">
-      <span
-        >C. Por favor, marque todas afirmativas abaixo que descrevam você</span
-      >
-      <span
-        >Marque somente aquelas que frequentemente ou geralmente se aplicam a
-        você e ignore aquelas que muito raramente ou nunca se aplicam a
-        você.</span
-      >
-    </v-container>
-
+    <!-- questao c -->
+    <QuestionHeader
+      text="Por favor, marque todas afirmativas abaixo que descrevam você"
+      id="C"
+      :infos="[
+        'Marque somente aquelas que frequentemente ou geralmente se aplicam a você e ignore aquelas que muito raramente ou nunca se aplicam a você.',
+      ]"
+    />
     <v-row>
       <v-col
         v-for="question in questionsC"
@@ -108,9 +104,9 @@
       </v-col>
     </v-row>
 
-    <!-- questao C -->
+    <!-- questao c -->
 
-    <!-- questao D -->
+    <!-- questao d -->
     <br />
     <h3>Comentários</h3>
     <br />
@@ -121,22 +117,24 @@
       rows="3"
       row-height="25"
     ></v-textarea>
-    <!-- questao D -->
+    <!-- questao d -->
   </v-container>
 </template>
 
 <script>
-import FormHeader from "../components/FormHeader";
+import FormHeaderNew from "../components/FormHeaderNew";
 import FormInfo from "../components/FormInfo";
 import QuestionType1 from "../components/QuestionType1";
 import QuestionType2 from "../components/QuestionType2";
+import QuestionHeader from "../components/QuestionHeader";
 
 export default {
   components: {
-    FormHeader,
+    FormHeaderNew,
     FormInfo,
     QuestionType1,
-    QuestionType2
+    QuestionType2,
+    QuestionHeader,
   },
   name: "Form1",
   data() {
@@ -369,4 +367,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.mediumPurple {
+  background-color: rgb(205, 192, 218);
+}
 </style>

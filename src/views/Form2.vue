@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <FormHeader
+    <FormHeaderNew
       boxColor="rgb(176, 161, 198)"
       textLeft1="INICIAL"
       textLeft2="2 DE 2"
@@ -96,13 +96,13 @@
 </template>
 
 <script>
-import FormHeader from "../components/FormHeader";
+import FormHeaderNew from "../components/FormHeaderNew";
 import FormInfo from "../components/FormInfo";
 import QuestionType3 from "../components/QuestionType3";
 
 export default {
   components: {
-    FormHeader,
+    FormHeaderNew,
     FormInfo,
     QuestionType3
   },
