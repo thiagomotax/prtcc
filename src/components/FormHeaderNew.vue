@@ -5,7 +5,7 @@
         cols="12"
         sm="12"
         lg="2"
-        class="bordercard pt-5"
+        class="bordercard pt-8"
         :style="{ 'background-color': boxColor }"
       >
         <p class="font-weight-bold">{{ textLeft1 }}</p>
@@ -22,7 +22,7 @@
         cols="12"
         sm="12"
         lg="2"
-        class="bordercard pt-5"
+        class="bordercard pt-8"
         :style="{ 'background-color': boxColor }"
       >
         <p>{{ textRight1 }}</p>

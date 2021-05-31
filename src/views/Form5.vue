@@ -1,10 +1,10 @@
 <template>
   <v-container class="grey lighten-5" fluid>
     <FormHeaderNew
-      boxColor="rgb(176, 161, 198)"
-      textLeft1="INICIAL"
-      textLeft2="1 DE 2"
-      textRight1="FORMULÁRIO 1"
+      boxColor="rgb(117, 147, 62)"
+      textLeft1="FOLLOW-UP"
+      textLeft2="1 DE 3"
+      textRight1="FORMULÁRIO 5"
       textRight2="CLIENTE"
       textMiddle1="AVALIAÇÃO DE TECNOLOGIA ASSISTIVA- PREDISPOSIÇÃO AO USO"
       textMiddle2="ATD PA- Br"
@@ -12,7 +12,7 @@
     />
 
     <FormInfo
-      boxColor="rgb(205, 192, 218)"
+      boxColor="rgb(213, 228, 188)"
       name="Nome"
       age="Idade"
       shortGoals="Objetivos a curto prazo da T.A (6 meses)"
@@ -23,20 +23,18 @@
 
     <!-- questao a -->
     <QuestionHeader
-      text="Que nota você daria hoje para as suas habilidades nas 9 áreas listas
-        abaixo. Caso você já tenha dispositivos de TA ou outro auxílio,
-        considere-os."
+      text="Que nota você daria hoje para as suas habilidades nas 9 áreas listadas abaixo, considerando o uso do seu dispositivo de TA atual ou outro auxílio."
       id="A"
       :infos="[
-        'Para os itens 1-9 marque a resposta mais adequada (1 para ruim e até 5 para excelente).',
-        'Na coluna Nome do Dispositivo escreva o nome da TA que faz uso e ondeé relevante (por exemplo : “óculos de grau” na primeira linha, “visão”);',
-        'Escreva um sinal de mais (+) no espaço onde você espera precisar de mais dispositivos de TA ao longo do próximo ano (por exemplo : “óculos” recebe um mais (+) se você espera precisar de lentes mais fortes durante o próximo ano). Escreva um sinal de menos (-) nos espaços onde você espera diminuir o suporte, e ( 0 ) onde você espera que o seu dispositivo de TA deveria continuar o mesmo ao longo do próximo ano.',
+        'Para os itens 1-9 marque a resposta mais adequada(1 para ruim e até 5 para excelente).',
+        'Na coluna Nome do Dispositivo escreva o nome da TA que faz uso e onde é relevante (por exemplo “óculos de grau” na primeira linha, “visão”).',
+        'Escreva um sinal de mais (+) no espaço onde você espera precisar de mais dispositivos de TA ao longo do próximo ano (por exemplo: “óculos” recebe um mais (+) se você espera precisar de lentes mais fortes durante o próximo ano). Escreva um sinal de menos (-) nos espaços onde você espera diminuir o suporte, e (0) onde você espera que o seu dispositivo de TA deveria continuar o mesmo ao longo do próximo ano.',
       ]"
     />
 
     <div v-for="(question, index) in questionsA" :key="question.number">
       <question-type-1
-        :color="index % 2 == 0 ? 'rgb(229, 223, 237)' : ''"
+        :color="index % 2 == 0 ? 'rgb(213, 228, 188)' : ''"
         :number="question.number"
         :text="question.text"
         :info="
@@ -61,14 +59,17 @@
         áreas?"
       id="B"
       :infos="[
-        'Para os itens 10-21 marque a resposta mais adequada (dê 1 para não satisfeito e até 5 para muito satisfeito). Quais são os 3 itens mais importantes para você ? Considerando as 3 áreas mais importantes, marque a ordem de prioridade 1º, 2º e 3º dos itens mais importantes (1º = mais importante). Deixe as outras linhas em branco. Para os 3 itens mais importantes, escreva no espaço ao lado os principais obstáculos e barreiras que você enfrenta.',
+        'Para os itens 10-21 marque a reposta mais adequada (dê 1 para não satisfeito e até 5 para muito satisfeito).',
       ]"
+      text2="Quais são os 3 itens mais importantes para você? Considerando as três áreas mais importantes para você, marque em ordem de prioridade 1º, 2º e 3º os itens mais importantes (1º = mais importante). Deixe as outras linhas em branco."
+      text3="Para os 3 itens mais importantes para você, escreva no espaço ao lado, os principais obstáculos e barreiras que você enfrenta."
     />
+
     <div v-for="(question, index) in questionsB" :key="question.number">
       <question-type-1
         :number="question.number"
         :text="question.text"
-        :color="index % 2 == 0 ? 'rgb(229, 223, 237)' : ''"
+        :color="index % 2 == 0 ? 'rgb(213, 228, 188)' : ''"
         :info="
           index === 0
             ? {
@@ -119,7 +120,7 @@
         row-height="25"
       ></v-textarea>
       <!-- questao d -->
-       </v-container>
+    </v-container>
   </v-container>
 </template>
 
@@ -138,7 +139,7 @@ export default {
     QuestionType2,
     QuestionHeader,
   },
-  name: "Form1",
+  name: "Form5",
   data() {
     return {
       questionsA: [

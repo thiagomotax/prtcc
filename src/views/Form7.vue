@@ -1,18 +1,19 @@
 <template>
   <v-container>
     <FormHeaderNew
-      boxColor="rgb(176, 161, 198)"
-      textLeft1="INICIAL"
-      textLeft2="2 DE 2"
-      textRight1="FORMULÁRIO 2"
-      textRight2="CLIENTE"
+      boxColor="rgb(117, 147, 62)"
+      textLeft1="FOLLOW-UP"
+      textLeft2="3 DE 3"
+      textRight1="FORMULÁRIO 7"
+      textRight2="DISPOSITIVO"
       textMiddle1="AVALIAÇÃO DE TECNOLOGIA ASSISTIVA- PREDISPOSIÇÃO AO USO"
       textMiddle2="ATD PA- Br"
-      textMiddle3="Para Comparar Dispositivo e Obter Resultados Desejados"
+      textMiddle3="FORMULÁRIO DO CLIENTE"
     />
+    <h3 class="text-center">Razões Para Não Usar um ou mais Dispositivos</h3>
 
     <FormInfo
-      boxColor="rgb(205, 192, 218)"
+      boxColor="rgb(213, 228, 188)"
       name="Nome"
       age="Idade"
       shortGoals="Objetivos a curto prazo da T.A (6 meses)"
@@ -23,19 +24,18 @@
 
     <h3>Instruções:</h3>
     <span>
-      Escreva o nome de cada dispositivo que você está considerando no espaço
-      abaixo de “Dispositivo”. Observe o exemplo dado. Classifique cada
-      dispositivo de TA considerando os 12 (A-L)de acordo com a escala abaixo,
-      depois circule os 3 itens (A-L) que quais importam para você. Escreva a
-      classificação nos espaços apropriados.</span
+     Escreva o nome de cada dispositivo que você está considerando no espaço abaixo de “Dispositivo”. 
+     Observe o exemplo dado. Classifique cada dispositivo de TA considerando os 12 (A-L)de acordo com a escala abaixo
+     , depois circule os 3 itens (A-L) que quais importam para você. Escreva a classificação nos espaços apropriados.
+</span
     >
     <v-row>
-      <v-col cols="12" sm="6" md="3">
+      <v-col cols="12" sm="6" md="5">
         <p>5 = O tempo todo (100% do tempo)</p>
         <p>4 = Frequentemente (aproximadamente 75% do tempo)</p>
-        <p>3 = Metade do tempo, neutro( aproximadamente 50% do tempo)</p>
+        <p>3 = Metade do tempo, neutro (aproximadamente 50% do tempo)</p>
       </v-col>
-      <v-col cols="12" sm="6" md="3">
+      <v-col cols="12" sm="6" md="5">
         <p>2 = Ás vezes (aproximadamente 25% do tempo)</p>
         <p>1 = Nunca (0% do tempo)</p>
         <p>0 = Não se aplica.</p>
@@ -80,19 +80,51 @@
         :text="question.text"
         :exampleNumber="question.exampleNumber"
         :color="index % 2 == 0 ? 'rgb(229, 223, 237)' : ''"
-        :finalComment="
-          questions.length - 1 === index
-            ? 'Revise cada pontuação total acima. Dispositivo com a pontuação mais alta é o mais elegível ( número máximo de pontos = 60). Entretanto, quando a pontuação total dos dispositivos for próxima, deverá ser dado maior peso a soma dos três itens marcados como mais importantes.'
-            : ''
-        "
-        :finalInfo="questions.length - 1 === index ? true : false"
+        :finalInfo="false"
         :sumDevice1="questions.length - 1 === index ? sumDevice1 : null"
         :sumDevice2="questions.length - 1 === index ? sumDevice2 : null"
         :sumDevice3="questions.length - 1 === index ? sumDevice3 : null"
 
       />
-      <!-- <question-type-3 finalComment="Revise cada pontuação total acima. Dispositivo com a pontuação mais alta é o mais elegível ( número máximo de pontos = 60). Entretanto, quando a pontuação total dos dispositivos for próxima, deverá ser dado maior peso a soma dos três itens marcados como mais importantes."/> -->
     </div>
+      <!-- <question-type-3 finalComment="Revise cada pontuação total acima. Dispositivo com a pontuação mais alta é o mais elegível ( número máximo de pontos = 60). Entretanto, quando a pontuação total dos dispositivos for próxima, deverá ser dado maior peso a soma dos três itens marcados como mais importantes."/> -->
+
+    <h3>Instruções:</h3>
+    <span>
+     Na linha M escreva a letra que representa, dentre as razões abaixo, aquela que levou você a parar de usar o dispositivo.
+    </span
+    >
+    <v-row>
+      <v-col cols="12" sm="6" md="4">
+        <p>a. Quebrou e eu não consegui usar.</p>
+        <p>b. Era inconveniente demais para usar.</p>
+        <p>c. Não era do tamanho certo para mim.</p>
+        <p>d. Não me ajudou quanto eu esperava.</p>
+        <p>e. Era complicado demais para usar.</p>
+        <p>f. É muito caro para eu usar.</p>
+
+      </v-col>
+      <v-col cols="12" sm="6" md="7">
+        <p>g. Eu me senti constrangido usando-o.</p>
+        <p>h. Eu não tive o treinamento que eu precisava para usá-lo bem.</p>
+        <p>i. Não se encaixava às minhas necessidades/preferências/estilo de vida.</p>
+        <div class="d-flex d-inline align-center">
+            <span class="mr-5">j. Eu substituí por um recurso ou apoio diferente. Qual ?</span> <v-text-field placeholder=""></v-text-field>
+        </div>
+        <div class="d-flex d-inline align-center">
+            <span class="mr-5">k. Eu não preciso mais dele porque</span> <v-text-field placeholder=""></v-text-field>
+        </div>
+        <div class="d-flex d-inline align-center">
+            <span class="mr-5">l. Outra razão:</span> <v-text-field placeholder=""></v-text-field>
+        </div>
+        
+
+      </v-col>
+    </v-row>
+
+    <p>REVISE AS PONTUAÇÕES ACIMA. Em geral, quanto mais alta a pontuação total( pontuação máxima = 60), 
+        mais satisfeito o usuário e mais útil o dispositivo. Entretanto, quando múltiplos dispositivos estão sendo comparados e o 
+        número total de pontos de cada um é próximo, mais peso deve ser dado aos três itens circulados como sendo mais importantes.</p>
 
     <h3>Comentários e Anotações:</h3>
     <br />
@@ -119,7 +151,7 @@ export default {
     FormInfo,
     QuestionType3,
   },
-  name: "Form2",
+  name: "Form6",
   data() {
     return {
       sumDevice1: 0,
@@ -127,86 +159,100 @@ export default {
       sumDevice3: 0,
       questions: [
         {
+          id: "",
+          text:
+            "Número de semanas que você usou o recurso",
+          exampleNumber: "36",
+          value: [0, 0, 0],
+        },
+        {
           id: "A",
           text:
-            "Este dispositivo de TA me ajudará a alcançar meus objetivos (incluindo os objetivos primário da TA escritos acima)",
+            "O dispositivo de TA ajudou você a alcançar os seus objetivos (incluindo os objetivos a curto prazo da TA descritos acima)",
           exampleNumber: "5",
           value: [0, 0, 0],
         },
         {
           id: "B",
           text:
-            "Este dispositivo me beneficiará e melhorará minha qualidade de vida ",
+            "Este dispositivo me beneficiou você e melhorou sua qualidade de vida",
           exampleNumber: "3",
           value: [0, 0, 0],
         },
         {
           id: "C",
           text:
-            "Eu estou confiante que eu sei como usar este dispositivo e suas variações",
+            "Você está confiante que você obteve o máximo  do dispositivo e de seus componentes?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "D",
           text:
-            "Eu me sentirei mais seguro ( em segurança, seguro de mim mesmo) usando este dispositivo de TA",
+            "Você se sentiu mais seguro ( certo de você mesmo) usando este dispositivo ?",
           exampleNumber: "5",
           value: [0, 0, 0],
         },
         {
           id: "E",
-          text: "Este dispositivo se encaixará bem à minha rotina diária.",
+          text: "Este dispositivo se encaixou à sua rotina?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "F",
           text:
-            "Eu tenho capacidade e vigor para usar este dispositivo sem desconforto, estresse ou fadiga",
+            "Você teve as habilidades e energia para usar este dispositivo sem desconforto, estresse ou fadiga?",
           exampleNumber: "3",
           value: [0, 0, 0],
         },
         {
           id: "G",
           text:
-            "Há suporte, assistência e acomodações para o uso bem sucedido deste dispositivo",
+            "Você teve suporte, assistência e acomodações para usar o dispositivo com sucesso?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "H",
           text:
-            "Este dispositivo se encaixará fisicamente em todos os ambientes desejados (carro, sala de estar etc…)",
+            "Este dispositivo se encaixou fisicamente em todos os ambientes desejados (carro, sala de estar etc…)",
           exampleNumber: "3",
           value: [0, 0, 0],
         },
         {
           id: "I",
           text:
-            "Eu vou me sentir confortável (não vou ficar constrangido) usando este dispositivo perto dos meus amigos ",
+            "Você se sentiu confortável (não se sentiu constrangido) usando este dispositivo perto dos meus familiares?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "J",
           text:
-            "Eu vou me sentir confortável (não vou ficar constrangido) usando este dispositivo perto dos meus familiares ",
+            "Você se sentiu confortável (não se sentiu constrangido)  usando este dispositivo perto dos meus amigos?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "K",
           text:
-            "Eu me sentirei confortável (não vou ficar constrangido) usando este  positivo na escola ou no trabalho",
+            "Você se sentiu confortável (não se sentiu constrangido)  usando este dispositivo na escola ou no trabalho?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "L",
           text:
-            "Eu me sentirei confortável(e não vou me sentir constrangido ) usando este dispositivo na minha comunidade )",
+            "Você se sentiu confortável (não se sentiu constrangido)  usando este dispositivo na minha comunidade )?",
           exampleNumber: "4",
+          value: [0, 0, 0],
+        },
+        {
+          id: "M",
+          text:
+            "Principal razão pela qual você parou de usar o dispositivo ",
+          exampleNumber: "D",
           value: [0, 0, 0],
         },
       ],

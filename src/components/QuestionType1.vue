@@ -1,6 +1,6 @@
 <template>
-  <div class="m-0 p-0">
-    <v-row v-if="info">
+  <v-container class="m-0 p-0">
+    <v-row v-if="Object.keys(info).length !== 0">
       <v-col cols="12" offset-md="4" md="4" xs="12" class="text-center">
         <span class="mr-6 font-weight-black">{{ info.scale1 }}</span>
         <span class="mr-6 font-weight-black">{{ info.scale2 }}</span>
@@ -33,7 +33,7 @@
         <v-text-field></v-text-field>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>

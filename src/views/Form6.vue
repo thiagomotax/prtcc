@@ -1,18 +1,19 @@
 <template>
   <v-container>
     <FormHeaderNew
-      boxColor="rgb(176, 161, 198)"
-      textLeft1="INICIAL"
-      textLeft2="2 DE 2"
-      textRight1="FORMULÁRIO 2"
-      textRight2="CLIENTE"
+      boxColor="rgb(117, 147, 62)"
+      textLeft1="FOLLOW-UP"
+      textLeft2="2 DE 3"
+      textRight1="FORMULÁRIO 6"
+      textRight2="DISPOSITIVO"
       textMiddle1="AVALIAÇÃO DE TECNOLOGIA ASSISTIVA- PREDISPOSIÇÃO AO USO"
       textMiddle2="ATD PA- Br"
-      textMiddle3="Para Comparar Dispositivo e Obter Resultados Desejados"
+      textMiddle3="FORMULÁRIO DO CLIENTE"
     />
+    <h3 class="text-center">Razões Para Não Usar um ou mais Dispositivos</h3>
 
     <FormInfo
-      boxColor="rgb(205, 192, 218)"
+      boxColor="rgb(213, 228, 188)"
       name="Nome"
       age="Idade"
       shortGoals="Objetivos a curto prazo da T.A (6 meses)"
@@ -23,19 +24,18 @@
 
     <h3>Instruções:</h3>
     <span>
-      Escreva o nome de cada dispositivo que você está considerando no espaço
-      abaixo de “Dispositivo”. Observe o exemplo dado. Classifique cada
-      dispositivo de TA considerando os 12 (A-L)de acordo com a escala abaixo,
-      depois circule os 3 itens (A-L) que quais importam para você. Escreva a
-      classificação nos espaços apropriados.</span
+      Escreva o nome de cada dispositivo que você está considerando no espaço abaixo de “Dispositivo”. 
+      Observe o exemplo dado. Classifique cada dispositivo de TA considerando os 12 (A-L)de acordo com a escala abaixo,
+       depois circule os 3 itens (A-L) que quais importam para você. Escreva a classificação nos espaços apropriados.
+</span
     >
     <v-row>
-      <v-col cols="12" sm="6" md="3">
+      <v-col cols="12" sm="6" md="5">
         <p>5 = O tempo todo (100% do tempo)</p>
         <p>4 = Frequentemente (aproximadamente 75% do tempo)</p>
         <p>3 = Metade do tempo, neutro( aproximadamente 50% do tempo)</p>
       </v-col>
-      <v-col cols="12" sm="6" md="3">
+      <v-col cols="12" sm="6" md="5">
         <p>2 = Ás vezes (aproximadamente 25% do tempo)</p>
         <p>1 = Nunca (0% do tempo)</p>
         <p>0 = Não se aplica.</p>
@@ -82,10 +82,10 @@
         :color="index % 2 == 0 ? 'rgb(229, 223, 237)' : ''"
         :finalComment="
           questions.length - 1 === index
-            ? 'Revise cada pontuação total acima. Dispositivo com a pontuação mais alta é o mais elegível ( número máximo de pontos = 60). Entretanto, quando a pontuação total dos dispositivos for próxima, deverá ser dado maior peso a soma dos três itens marcados como mais importantes.'
+            ? 'REVISE AS PONTUAÇÕES ACIMA. Em geral, quanto mais alta a pontuação total( pontuação máxima = 60), mais satisfeito o usuário e mais útil o dispositivo. Entretanto, quando múltiplos dispositivos estão sendo comparados e o número total de pontos de cada um é próximo, mais peso deve ser dado aos três itens circulados como sendo mais importantes.'
             : ''
         "
-        :finalInfo="questions.length - 1 === index ? true : false"
+        :finalInfo="false"
         :sumDevice1="questions.length - 1 === index ? sumDevice1 : null"
         :sumDevice2="questions.length - 1 === index ? sumDevice2 : null"
         :sumDevice3="questions.length - 1 === index ? sumDevice3 : null"
@@ -119,7 +119,7 @@ export default {
     FormInfo,
     QuestionType3,
   },
-  name: "Form2",
+  name: "Form6",
   data() {
     return {
       sumDevice1: 0,
@@ -127,85 +127,92 @@ export default {
       sumDevice3: 0,
       questions: [
         {
+          id: "",
+          text:
+            "Quantas horas por dia eu atualmente uso esse dispositivo...",
+          exampleNumber: "12 horas",
+          value: [0, 0, 0],
+        },
+        {
           id: "A",
           text:
-            "Este dispositivo de TA me ajudará a alcançar meus objetivos (incluindo os objetivos primário da TA escritos acima)",
+            "Este dispositivo de TA está me ajudando a alcançar meus objetivos (incluindo os objetivos primário da TA descritos acima)? ",
           exampleNumber: "5",
           value: [0, 0, 0],
         },
         {
           id: "B",
           text:
-            "Este dispositivo me beneficiará e melhorará minha qualidade de vida ",
+            "Este dispositivo tem me beneficiado e melhorou minha qualidade de vida?",
           exampleNumber: "3",
           value: [0, 0, 0],
         },
         {
           id: "C",
           text:
-            "Eu estou confiante que eu sei como usar este dispositivo e suas variações",
+            "Eu estou confiante que estou obtendo o máximo do dispositivo e seus componentes?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "D",
           text:
-            "Eu me sentirei mais seguro ( em segurança, seguro de mim mesmo) usando este dispositivo de TA",
+            "Eu estou me sentindo mais seguro ( certo de mim mesmo) usando este dispositivo?",
           exampleNumber: "5",
           value: [0, 0, 0],
         },
         {
           id: "E",
-          text: "Este dispositivo se encaixará bem à minha rotina diária.",
+          text: "Este dispositivo se encaixa à minha rotina diária?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "F",
           text:
-            "Eu tenho capacidade e vigor para usar este dispositivo sem desconforto, estresse ou fadiga",
+            "Eu tenho habilidade e energia para usar este dispositivo sem desconforto, estresse ou fadiga?",
           exampleNumber: "3",
           value: [0, 0, 0],
         },
         {
           id: "G",
           text:
-            "Há suporte, assistência e acomodações para o uso bem sucedido deste dispositivo",
+            "Eu tenho suporte, assistência e acomodações para usar o dispositivo com sucesso?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "H",
           text:
-            "Este dispositivo se encaixará fisicamente em todos os ambientes desejados (carro, sala de estar etc…)",
+            "Este dispositivo se encaixa fisicamente em todos os ambientes desejados (carro, sala de estar etc…)?",
           exampleNumber: "3",
           value: [0, 0, 0],
         },
         {
           id: "I",
           text:
-            "Eu vou me sentir confortável (não vou ficar constrangido) usando este dispositivo perto dos meus amigos ",
+            "Eu me sinto confortável (não me sinto constrangido) usando este dispositivo perto dos seus  familiares?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "J",
           text:
-            "Eu vou me sentir confortável (não vou ficar constrangido) usando este dispositivo perto dos meus familiares ",
+            "Eu me sinto confortável (não me sinto constrangido) usando este dispositivo perto dos seus  amigos?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "K",
           text:
-            "Eu me sentirei confortável (não vou ficar constrangido) usando este  positivo na escola ou no trabalho",
+            "Eu me sinto confortável (não me sinto constrangido) usando este dispositivo na escola ou no trabalho?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
         {
           id: "L",
           text:
-            "Eu me sentirei confortável(e não vou me sentir constrangido ) usando este dispositivo na minha comunidade )",
+            "Eu me sinto confortável (não me sinto constrangido) usando este dispositivo na sua comunidade )?",
           exampleNumber: "4",
           value: [0, 0, 0],
         },
